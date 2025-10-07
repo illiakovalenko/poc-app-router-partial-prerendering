@@ -13,7 +13,7 @@ export type RichTextProps = ComponentProps & {
 const MyComponent = async () => {
   let text = '';
   await new Promise(resolve => setTimeout(() => {
-    text = 'Hello world';
+    text = (Math.floor(Math.random() * 100) + 1).toString();
     resolve(true);
   }, 3000));
   console.log('SERVER COMPONENT RENDERED');
