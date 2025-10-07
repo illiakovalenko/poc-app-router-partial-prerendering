@@ -3,7 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   experimental: {
-    ppr: 'incremental',
+    ppr: true,
   },
   // use this configuration to ensure that only images from the whitelisted domains
   // can be served from the Next.js Image Optimization API
