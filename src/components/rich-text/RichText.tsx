@@ -1,6 +1,9 @@
-import React, { JSX, Suspense } from 'react';
-import { Field, RichText as ContentSdkRichText } from '@sitecore-content-sdk/nextjs';
-import { ComponentProps } from 'lib/component-props';
+import React, { JSX, Suspense } from "react";
+import {
+  Field,
+  RichText as ContentSdkRichText,
+} from "@sitecore-content-sdk/nextjs";
+import { ComponentProps } from "lib/component-props";
 
 interface Fields {
   Text: Field<string>;
@@ -12,21 +15,22 @@ export type RichTextProps = ComponentProps & {
 
 const MyComponent = async () => {
   try {
-    // Add delay before API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise(resolve => setTimeout(resolve, 3000));
     // Fetch random number from API
-    const response = await fetch('https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new');
+    const response = await fetch(
+      "https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new",
+      { cache: "no-store" }
+    );
     const randomNumber = await response.text();
-    console.log('SERVER COMPONENT RENDERED');
+    console.log("SERVER COMPONENT RENDERED");
     return <div>{randomNumber.trim()}</div>;
   } catch (error) {
-    console.error('Error fetching random number:', error);
+    console.error("Error fetching random number:", error);
     // Fallback to local generation if API fails
     // throw error;
     return <div>Error fetching random number</div>;
   }
-}
+};
 
 export const Default = ({ params, fields }: RichTextProps): JSX.Element => {
   const { RenderingIdentifier, styles } = params;
