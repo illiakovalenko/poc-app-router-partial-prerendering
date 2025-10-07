@@ -1,4 +1,4 @@
-import React, { JSX } from 'react';
+import React, { JSX, Suspense } from 'react';
 import { Field, RichText as ContentSdkRichText } from '@sitecore-content-sdk/nextjs';
 import { ComponentProps } from 'lib/component-props';
 
@@ -9,6 +9,16 @@ interface Fields {
 export type RichTextProps = ComponentProps & {
   fields: Fields;
 };
+
+const MyComponent = async () => {
+  let text = '';
+  await new Promise(resolve => setTimeout(() => {
+    text = 'Hello world';
+    resolve(true);
+  }, 3000));
+  console.log('SERVER COMPONENT RENDERED');
+  return text;
+}
 
 export const Default = ({ params, fields }: RichTextProps): JSX.Element => {
   const { RenderingIdentifier, styles } = params;
@@ -21,6 +31,9 @@ export const Default = ({ params, fields }: RichTextProps): JSX.Element => {
         ) : (
           <span className="is-empty-hint">Rich text</span>
         )}
+        <Suspense fallback={<div>Loading...</div>}>
+          <MyComponent />
+        </Suspense>
       </div>
     </div>
   );

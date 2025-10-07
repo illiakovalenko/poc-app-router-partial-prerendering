@@ -3,8 +3,9 @@
 import { combineImportEntries, defaultImportEntries } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import { Link, Text, useSitecore, RichText, NextImage, Placeholder as Placeholder_8a80e63291fea86e0744df19113dc44bec187216, ServerPlaceholder, CdpHelper, withDatasourceCheck } from '@sitecore-content-sdk/nextjs';
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import React from 'react';
 import Placeholder from 'components/content-sdk/Placeholder';
 import { componentMap } from '.sitecore/component-map';
@@ -14,6 +15,14 @@ import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
 
 const importMap = [
+  {
+    module: 'react/jsx-runtime',
+    exports: [
+      { name: 'jsx', value: jsx },
+      { name: 'jsxs', value: jsxs },
+      { name: 'Fragment', value: Fragment },
+    ]
+  },
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
@@ -31,6 +40,7 @@ const importMap = [
   {
     module: 'react',
     exports: [
+      { name: 'Suspense', value: Suspense },
       { name: 'useState', value: useState },
       { name: 'useEffect', value: useEffect },
       { name: 'default', value: React },

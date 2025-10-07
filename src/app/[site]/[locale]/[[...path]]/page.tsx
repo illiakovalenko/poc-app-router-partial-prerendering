@@ -14,6 +14,8 @@ import { setRequestLocale } from 'next-intl/server';
 
 import 'assets/main.css';
 
+export const experimental_ppr = true;
+
 type PageProps = {
   params: Promise<{ site: string; locale: string; path?: string[]; [key: string]: string | string[] | undefined }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
