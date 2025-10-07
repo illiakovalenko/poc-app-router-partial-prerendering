@@ -27,7 +27,7 @@ const MyComponent = async ({ componentId }: { componentId: string | undefined })
   return <div>{randomNumber.trim()}</div>;
 };
 
-export const Default = ({ params, fields }: RichTextProps): JSX.Element => {
+export const Default = ({ params, fields, rendering }: RichTextProps): JSX.Element => {
   const { RenderingIdentifier, styles } = params;
 
   return (
@@ -39,7 +39,7 @@ export const Default = ({ params, fields }: RichTextProps): JSX.Element => {
           <span className="is-empty-hint">Rich text</span>
         )}
         <Suspense fallback={<div>Loading...</div>}>
-          <MyComponent componentId={RenderingIdentifier} />
+          <MyComponent componentId={rendering.uid} />
         </Suspense>
       </div>
     </div>
