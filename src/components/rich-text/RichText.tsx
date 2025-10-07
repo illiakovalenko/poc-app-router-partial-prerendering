@@ -13,7 +13,7 @@ export type RichTextProps = ComponentProps & {
   fields: Fields;
 };
 
-const MyComponent = async ({ componentId }: { componentId: string }) => {
+const MyComponent = async ({ componentId }: { componentId: string | undefined }) => {
   // Random delay between 2-4 seconds
   const randomDelay = Math.random() * 2000 + 2000; // 2000ms to 4000ms
   await new Promise(resolve => setTimeout(resolve, randomDelay));
