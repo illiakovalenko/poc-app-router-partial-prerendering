@@ -12,6 +12,8 @@ import Bootstrap from 'src/Bootstrap';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
+import 'assets/main.css';
+
 type PageProps = {
   params: Promise<{ site: string; locale: string; path?: string[]; [key: string]: string | string[] | undefined }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
