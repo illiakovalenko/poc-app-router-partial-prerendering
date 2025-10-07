@@ -14,7 +14,9 @@ export type RichTextProps = ComponentProps & {
 };
 
 const MyComponent = async () => {
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  // Random delay between 2-4 seconds
+  const randomDelay = Math.random() * 2000 + 2000; // 2000ms to 4000ms
+  await new Promise(resolve => setTimeout(resolve, randomDelay));
   // Fetch random number from API
   const response = await fetch(
     "https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new",
