@@ -24,7 +24,6 @@ const MyComponent = async () => {
   );
   const randomNumber = await response.text();
   console.log("Response received:", randomNumber);
-  console.log("SERVER COMPONENT RENDERED");
   return <div>{randomNumber.trim()}</div>;
 };
 
